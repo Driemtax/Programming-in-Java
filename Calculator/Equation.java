@@ -20,7 +20,7 @@ public class Equation {
                     break;
             }
         }
-        return result;
+        return expression;
     }
 
     public static double Calculate(String expression){
