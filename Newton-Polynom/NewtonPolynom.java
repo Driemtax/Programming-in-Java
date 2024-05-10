@@ -30,14 +30,22 @@ public class NewtonPolynom {
 
     public static int[] DivisionDifferences(HashMap<Integer, Integer> data){
         int[] result = new int[data.size() - 1];
-        List<Integer> sortedKeys = new ArrayList<>(data.keySet());
-        Collections.sort(sortedKeys);
+        List<Integer> keys = new ArrayList<>(data.keySet());
 
-        for (int i = 0; i < sortedKeys.size()-1; i++) {
-            int currentKey = sortedKeys.get(i);
-            int nextKey = sortedKeys.get(i+1);
+        for (int i = 1; i < keys.size()-1; i++) {
+            int currentKey = keys.get(i);
+            int firstKey = keys.get(0);
 
-            result[i] = (data.get(nextKey) - data.get(currentKey)) / (nextKey-currentKey);
+            for (int j = 0; j < i; j++) {
+                   
+            }
+
+            if(i==0){
+                result[i] = (data.get(currentKey) - data.get(firstKey)) / (currentKey - firstKey);
+            }
+            else{
+
+            }
         }
 
         return result;
