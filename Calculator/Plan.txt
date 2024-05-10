@@ -1,0 +1,27 @@
+Klammern rekursiv ausrechnen
+Ausrechnen
+	Mann kann + und * als Junktoren verstehen und verschachtelte Tupel machen
+	Minus ist dann einfach + mit der negierten Zahl. Also 10-5 = 10+(-5)
+	Division 12/3 = 12 * 1/3
+	Junktoren, die man braucht: +, *, /
+	KNF bilden. Klausel sind innen mit * oder / verbunden (das muss irgendwie differenziert werden)
+	und außen mit + verbunden
+	Dann kann man die einzelnen Klauseln ausrechnen und das Ergebnis zurückgegben
+Wenn eine Klammer ausgerechnet ist muss man die Funktion erneut aufrufen und nächste, weiter äußere, Klammer ausre
+Abbrechen muss die Funktion, wenn keine Klammern mehr vorhanden sind und auch keine Operatoren mehr da sind
+	Letzter Calcuate Aufruf, wenn man keine Klammern mehr findet
+
+
+Beispiel: 2+3*4*2 = 28
+	1. Bis Operator iterieren (+,i=1)
+	2. Operator 1 merken in Variable, Zahl auch merken
+	3. Iterieren bis zu zweitem Operator und merken in Variable (*,i=3), Zahl auch merken
+	4. Entscheiden, ob gerechnet werden kann
+		1. Fall Rechnen: Ergebnis merken und weiter iterieren
+		2. Fall nicht Rechnen: weiter iterieren bis Ende oder nächster Operator
+	5. Dann rechnen: Ergebnis merken
+	6. Dann erste gemerkte Zahl und erster gemerkter Operator mit Result verrechnen
+Man braucht: 2 Operatoren gemerkt, Operatoren als Dic merken, Form: {'+': i}
+Dic mit Operatoren für ganzen String erstellen. Dann erst alle mit * und / ausrechnen und zum Ergebnis hinzufügen
+Und dann alle mit + und - rechnen, jeweils von vorne nach hinten. Zum Ergebnis hinzufügen
+Rechnen: von Operator_n-1 +1 bis Operator_n und von Operator_n +1 bis Operator_n+1 
