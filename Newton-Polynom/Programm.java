@@ -2,10 +2,10 @@ import java.util.HashMap;
 
 public class Programm {
     public static void main(String args[]){
-        HashMap<Integer, Integer> data = new HashMap<Integer, Integer>();
-        data.put(1,2);
-        data.put(3,6);
-        data.put(4,5);
+        HashMap<Integer, Double> data = new HashMap<Integer, Double>();
+        data.put(-1,0.0);
+        data.put(1,3.0);
+        data.put(2,5.0);
 
 
         String polynom = NewtonPolynom.CreatePolynom(data);
