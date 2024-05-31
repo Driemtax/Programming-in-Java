@@ -32,36 +32,10 @@ public class NewtonPolynom {
         double[] result = new double[data.size() - 1];
         List<Integer> keys = new ArrayList<>(data.keySet());
 
-        int firstKey = keys.get(0);
-
-        //maybe first Difference outside of loop somehow
-        // for (int i = 1; i < keys.size(); i++) {
-        //     int currentKey = keys.get(i);
-
-        //     if(i-1 == 0){
-        //         result[i-1] = Difference(currentKey, firstKey, data.get(currentKey), data.get(firstKey));
-        //     }
-        //     else{
-        //         double currentDifference = Difference(currentKey, firstKey, data.get(currentKey), data.get(firstKey));
-        //         double lastDifference = result [i-2];
-
-        //         result[i-1] = Difference(currentKey, firstKey, currentDifference, lastDifference);
-        //     }
-
-
-        // }
         for (int i = 0; i < keys.size()-1; i++) {
             result[i] = DifferenceRecursive(data, 0, i+1);
         }
 
-        return result;
-    }
-
-    public static double Difference(int currentKey, int firstKey, double currentVal, double firstVal){
-        double result = 0;
-
-        result = (currentVal - firstVal) / (currentKey - firstKey);
-        
         return result;
     }
 
