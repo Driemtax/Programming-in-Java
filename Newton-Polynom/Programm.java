@@ -15,6 +15,6 @@ public class Programm {
 
         int[] test = RationalPresentation.Fraction(-4.5);
 
-        System.out.printf("Fraction of %f: %d/%d", -4.5, test[0], test[1]);
+        System.out.printf("Fraction of %f: %d/%d", 4.5, test[0], test[1]);
     }
 }

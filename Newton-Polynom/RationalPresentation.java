@@ -9,7 +9,7 @@ public class RationalPresentation {
         String wnp = sNumber.substring(0, sNumber.indexOf("."));
         int number = Integer.parseInt(wnp);
 
-        if (number >= 1) {
+        if (number >= 1 || number < 0) {
             int denumerator = NumeratorDivisor(number);
             int numerator = (int)(fNumber * denumerator);    
 
