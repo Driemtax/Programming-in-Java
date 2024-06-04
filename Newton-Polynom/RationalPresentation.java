@@ -30,6 +30,8 @@ public class RationalPresentation {
             fraction[0] = numerator;
             fraction[1] = denumerator;
         }
+
+        fraction = ShortenFraction(fraction);
         
 
         return fraction;
@@ -66,8 +68,48 @@ public class RationalPresentation {
         return false;
     }  
     
-    public int[] ShortenFraction(int[] fraction){
+    //Method to shorten the Fraction as much as possible
+    public static int[] ShortenFraction(int[] fraction){
         int numerator = fraction[0];
         int denumerator = fraction[1];
+        int result[] = new int[2];
+        
+        int biggerNumber = (numerator > denumerator) ? numerator : denumerator;
+        int smallerNumber = (numerator > denumerator) ? denumerator : numerator;
+
+        if (biggerNumber % smallerNumber == 0) {
+            int gcd = CGD(biggerNumber, smallerNumber);
+            result[0] = numerator / gcd;
+            result[1] = denumerator / gcd;
+            
+            return result;
+        }
+        else {
+            result[0] = numerator;
+            result[1] = denumerator;
+            return result;
+        }
     }
+
+    /*Method to calculate the common greatest divisor of 2 numbers with euklidian algorithm
+    Formula is m = q1 * n + b1 where m is the bigger number and n the smaller. 
+    Final n is the gcd of m and n*/
+    public static int CGD(int biggerNumber, int smallerNumber){
+        int m, n, q, b;
+        m = biggerNumber;
+        n = smallerNumber;
+
+        b = m % n;
+        q = (m-b) / n;
+        while (b > 0){
+            m = n;
+            n = b;
+            b = m % n;
+            q = (m-b) / n;
+            
+        }
+        
+        return n;
+    }
+
 }
