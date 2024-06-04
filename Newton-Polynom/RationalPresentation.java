@@ -17,7 +17,14 @@ public class RationalPresentation {
             fraction[1] = denumerator;
         }
         else {
-            int numerator = NumeratorDivisor(Integer.parseInt(sNumber.substring(sNumber.indexOf(".")+1)));
+            String fractionalPart = sNumber.substring(sNumber.indexOf(".")+1);
+            int numerator;
+            if (HasPeriodicPattern(fractionalPart)) {
+                numerator = NumeratorDivisor(Integer.parseInt(fractionalPart.substring(0, 2)));
+            }
+            else {
+                numerator = NumeratorDivisor(Integer.parseInt(fractionalPart));
+            }
             int denumerator = (int)(numerator/fNumber);
 
             fraction[0] = numerator;
@@ -36,5 +43,31 @@ public class RationalPresentation {
             }
         }
         return 2;
+    }
+
+    // Method to check for periodic behaviour in a fractional number
+    public static boolean HasPeriodicPattern(String fractionalPart){
+        for (int length = 1; length <= fractionalPart.length() / 2; length++) {
+            String pattern = fractionalPart.substring(1, length+1);
+            boolean isPattern = true;
+            
+            for (int i = length; i + length <= fractionalPart.length(); i += length) {
+                if (!fractionalPart.substring(i, i + length).equals(pattern)) {
+                    isPattern = false;
+                    break;
+                }
+            }
+            
+            if (isPattern) {
+                return true;
+            }
+        }
+        
+        return false;
+    }  
+    
+    public int[] ShortenFraction(int[] fraction){
+        int numerator = fraction[0];
+        int denumerator = fraction[1];
     }
 }

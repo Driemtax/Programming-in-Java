@@ -14,7 +14,15 @@ public class NewtonPolynom {
         int count = 1;
         for (double i : differences) {
             result += "+";
-            String p_i = Double.toString(i);
+            String p_i;
+            if (i % 1 == 0) {
+                p_i = Double.toString(i);       
+            }
+            else {
+                int fraction[] = RationalPresentation.Fraction(i);
+                p_i = Integer.toString(fraction[0]);
+                p_i += "/" + Integer.toString(fraction[1]);
+            }
             result += p_i;
             for (int j = 0; j < count; j++) {
                 String x_i = data.keySet().toArray()[j].toString();

@@ -12,9 +12,5 @@ public class Programm {
         String polynom = NewtonPolynom.CreatePolynom(data);
 
         System.out.printf("f(x)= %s\n", polynom);
-
-        int[] test = RationalPresentation.Fraction(-4.5);
-
-        System.out.printf("Fraction of %f: %d/%d", 4.5, test[0], test[1]);
     }
 }
