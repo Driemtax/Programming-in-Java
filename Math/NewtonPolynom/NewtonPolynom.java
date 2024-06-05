@@ -15,20 +15,29 @@ public class NewtonPolynom {
         double[] differences = DivisionDifferences(data);
         int count = 1;
         for (double i : differences) {
-            result += "+";
             String p_i;
             if (i % 1 == 0) {
-                p_i = Double.toString(i);       
+                p_i = Double.toString(i);
+                result += (i < 0) ? "" : "+";       
             }
             else {
                 int fraction[] = RationalPresentation.Fraction(i);
+                result += (fraction[0] < 0 || fraction[1] < 0) ? "" : "+";
                 p_i = Integer.toString(fraction[0]);
                 p_i += "/" + Integer.toString(fraction[1]);
             }
             result += p_i;
             for (int j = 0; j < count; j++) {
                 String x_i = data.keySet().toArray()[j].toString();
-                String x = "(x-" + x_i + ")";
+                //Hier muss noch der case x -- y abgefangen werden
+                String x;
+                if (x_i.contains("-")) {
+                    x_i = x_i.replace("-", "");
+                    x = "(x+" + x_i + ")";
+                }
+                else {
+                    x = "(x-" + x_i + ")";
+                }
                 result += x;
             }
             count++;

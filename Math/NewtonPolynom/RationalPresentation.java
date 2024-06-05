@@ -31,6 +31,11 @@ public class RationalPresentation {
             }
             int denumerator = (int)(numerator/fNumber);
 
+            if(denumerator < 0 && numerator >= 0 || numerator < 0 && denumerator < 0){
+                numerator *= -1;
+                denumerator *= -1;
+            }
+
             fraction[0] = numerator;
             fraction[1] = denumerator;
         }
