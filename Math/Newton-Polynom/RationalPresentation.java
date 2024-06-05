@@ -1,3 +1,5 @@
+import Math.Utility.*;
+
 public class RationalPresentation {
     public static int[] Fraction(double fNumber){
         String sNumber = String.valueOf(fNumber);
@@ -78,7 +80,7 @@ public class RationalPresentation {
         int smallerNumber = (numerator > denumerator) ? denumerator : numerator;
 
         if (biggerNumber % smallerNumber == 0) {
-            int gcd = CGD(biggerNumber, smallerNumber);
+            int gcd = Helper.CGD(biggerNumber, smallerNumber);
             result[0] = numerator / gcd;
             result[1] = denumerator / gcd;
             
@@ -90,26 +92,4 @@ public class RationalPresentation {
             return result;
         }
     }
-
-    /*Method to calculate the common greatest divisor of 2 numbers with euklidian algorithm
-    Formula is m = q1 * n + b1 where m is the bigger number and n the smaller. 
-    Final n is the gcd of m and n*/
-    public static int CGD(int biggerNumber, int smallerNumber){
-        int m, n, q, b;
-        m = biggerNumber;
-        n = smallerNumber;
-
-        b = m % n;
-        q = (m-b) / n;
-        while (b > 0){
-            m = n;
-            n = b;
-            b = m % n;
-            q = (m-b) / n;
-            
-        }
-        
-        return n;
-    }
-
 }
