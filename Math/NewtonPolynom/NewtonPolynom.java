@@ -30,7 +30,14 @@ public class NewtonPolynom {
             for (int j = 0; j < count; j++) {
                 String x_i = data.keySet().toArray()[j].toString();
                 //Hier muss noch der case x -- y abgefangen werden
-                String x = "(x-" + x_i + ")";
+                String x;
+                if (x_i.contains("-")) {
+                    x_i.replace("-", "");
+                    x = "(x+" + x_i + ")";
+                }
+                else {
+                    x = "(x-" + x_i + ")";
+                }
                 result += x;
             }
             count++;
