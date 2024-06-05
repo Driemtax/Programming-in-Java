@@ -1,3 +1,5 @@
+package Math.NewtonPolynom;
+
 import Math.Utility.*;
 
 public class RationalPresentation {
@@ -50,25 +52,46 @@ public class RationalPresentation {
     }
 
     // Method to check for periodic behaviour in a fractional number
-    public static boolean HasPeriodicPattern(String fractionalPart){
-        for (int length = 1; length <= fractionalPart.length() / 2; length++) {
-            String pattern = fractionalPart.substring(1, length+1);
-            boolean isPattern = true;
+    // public static boolean HasPeriodicPattern(String fractionalPart){
+    //     for (int length = 1; length <= fractionalPart.length() / 2; length++) {
+    //         String pattern = fractionalPart.substring(1, length+1);
+    //         boolean isPattern = true;
             
-            for (int i = length; i + length <= fractionalPart.length(); i += length) {
-                if (!fractionalPart.substring(i, i + length).equals(pattern)) {
+    //         for (int i = length; i + length <= fractionalPart.length(); i += length) {
+    //             if (!fractionalPart.substring(i, i + length).equals(pattern)) {
+    //                 isPattern = false;
+    //                 break;
+    //             }
+    //         }
+            
+    //         if (isPattern) {
+    //             return true;
+    //         }
+    //     }
+        
+    //     return false;
+    // }  
+
+    public static boolean HasPeriodicPattern(String fractionalPart){
+        for (int i = 0; i <= fractionalPart.length() / 2; i++) {
+            String pattern = fractionalPart.substring(i, i+3);
+            boolean isPattern = true;
+
+            for (int j = i+3; j <= fractionalPart.length()-i-1; j++) {
+                String comparePattern = fractionalPart.substring(j, j+i);
+                if (!comparePattern.equals(pattern)) {
                     isPattern = false;
                     break;
                 }
             }
-            
+
             if (isPattern) {
                 return true;
             }
         }
-        
+
         return false;
-    }  
+    }
     
     //Method to shorten the Fraction as much as possible
     public static int[] ShortenFraction(int[] fraction){
