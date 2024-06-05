@@ -10,7 +10,6 @@ public class Programm {
         data.put(2,5.0);
         data.put(3, 4.0);
 
-
         String polynom = NewtonPolynom.CreatePolynom(data);
 
         System.out.printf("f(x)= %s\n", polynom);
