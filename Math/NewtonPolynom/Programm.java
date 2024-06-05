@@ -1,3 +1,5 @@
+package Math.NewtonPolynom;
+
 import java.util.HashMap;
 
 public class Programm {
