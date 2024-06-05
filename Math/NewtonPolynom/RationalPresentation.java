@@ -73,6 +73,9 @@ public class RationalPresentation {
     // }  
 
     public static boolean HasPeriodicPattern(String fractionalPart){
+        if (fractionalPart.length() < 5) {
+            return false;
+        }
         for (int i = 0; i <= fractionalPart.length() / 2; i++) {
             String pattern = fractionalPart.substring(i, i+3);
             boolean isPattern = true;
