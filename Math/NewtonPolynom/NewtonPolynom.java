@@ -32,7 +32,7 @@ public class NewtonPolynom {
                 //Hier muss noch der case x -- y abgefangen werden
                 String x;
                 if (x_i.contains("-")) {
-                    x_i.replace("-", "");
+                    x_i = x_i.replace("-", "");
                     x = "(x+" + x_i + ")";
                 }
                 else {
