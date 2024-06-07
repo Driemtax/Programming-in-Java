@@ -1,6 +1,8 @@
+import java.util.HashMap;
+
 public class Equation {
     public static String Parser(String expression){ //expression = 3 * (4 + (24*3)) 
-        //Über Funktion gehen und nach Operatoren suchen
+        //Über Funktion gehen und nach Klammern suchen
         if (!(expression.contains("("))) {
             expression = expression.concat(Double.toString(Calculate(expression)));
             return expression;
@@ -47,5 +49,40 @@ public class Equation {
         }
 
         return result;
+    }
+
+    public static Double Solve(String expression, HashMap<Integer, Character> operators){
+        Double result = 0.0;
+
+        while (operators.values().contains('*') | operators.values().contains('/')) {
+            
+        }
+
+        return result;
+    }
+
+    
+
+    public static HashMap<Integer, Character> FindOperators(String expression){
+        HashMap<Integer, Character> operators = new HashMap<Integer, Character>();
+
+        for (int i = 0; i < expression.length(); i++) {
+            switch (expression.charAt(i)) {
+                case '+':
+                    operators.put(i, '+');
+                    break;
+                case '-':
+                    operators.put(i, '-');
+                    break;
+                case '*': 
+                    operators.put(i, '*');
+                    break;
+                case '/':
+                    operators.put(i, '/');
+                    break;
+            }
+        }
+
+        return operators;
     }
 }
