@@ -1,11 +1,11 @@
 package Math.NewtonPolynom;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.ArrayList;
 import java.util.*;
 
 public class NewtonPolynom {
-    public static String CreatePolynom(HashMap<Integer, Double> data){
+    public static String CreatePolynom(LinkedHashMap<Integer, Double> data){
         String result = "";
 
         Object firstKey = data.keySet().toArray()[0];
@@ -16,7 +16,7 @@ public class NewtonPolynom {
         int count = 1;
         for (double i : differences) {
             String p_i;
-            if (i % 1 == 0) {
+            if (i % 1 == 0 || i == 0.0) {
                 p_i = Double.toString(i);
                 result += (i < 0) ? "" : "+";       
             }
@@ -33,10 +33,10 @@ public class NewtonPolynom {
                 String x;
                 if (x_i.contains("-")) {
                     x_i = x_i.replace("-", "");
-                    x = "(x+" + x_i + ")";
+                    x = "*(x+" + x_i + ")";
                 }
                 else {
-                    x = "(x-" + x_i + ")";
+                    x = "*(x-" + x_i + ")";
                 }
                 result += x;
             }
@@ -47,7 +47,7 @@ public class NewtonPolynom {
         return result;
     }
 
-    public static double[] DivisionDifferences(HashMap<Integer, Double> data){
+    public static double[] DivisionDifferences(LinkedHashMap<Integer, Double> data){
         double[] result = new double[data.size() - 1];
         List<Integer> keys = new ArrayList<>(data.keySet());
 
@@ -58,7 +58,7 @@ public class NewtonPolynom {
         return result;
     }
 
-    public static double DifferenceRecursive(HashMap<Integer, Double> data,int x_0, int n){
+    public static double DifferenceRecursive(LinkedHashMap<Integer, Double> data,int x_0, int n){
         double result = 0;
         List<Integer> keys = new ArrayList<>(data.keySet());
 
