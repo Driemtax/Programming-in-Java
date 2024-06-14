@@ -4,13 +4,19 @@ import Math.Utility.*;
 
 public class RationalPresentation {
     public static int[] Fraction(double fNumber){
-        String sNumber = String.valueOf(fNumber);
+        String wnp;
+        String fractionalPart;
+
+        String sNumber = String.valueOf((float)fNumber);
         int divisor = 1;
         int fraction[] = new int[2];
         fraction[0] = 1;
         fraction[1] = divisor;
 
-        String wnp = sNumber.substring(0, sNumber.indexOf("."));
+        //Check for E Numbers
+        sNumber = ConvertENumber(sNumber);
+
+        wnp = sNumber.substring(0, sNumber.indexOf("."));
         int number = Integer.parseInt(wnp);
 
         if (number >= 1 || number < 0) {
@@ -21,7 +27,7 @@ public class RationalPresentation {
             fraction[1] = denumerator;
         }
         else {
-            String fractionalPart = sNumber.substring(sNumber.indexOf(".")+1);
+            fractionalPart = sNumber.substring(sNumber.indexOf(".")+1);
             int numerator;
             if (HasPeriodicPattern(fractionalPart)) {
                 numerator = NumeratorDivisor(Integer.parseInt(fractionalPart.substring(0, 2)));
@@ -111,7 +117,7 @@ public class RationalPresentation {
         int smallerNumber = (numerator > denumerator) ? denumerator : numerator;
 
         if (biggerNumber % smallerNumber == 0) {
-            int gcd = Helper.CGD(biggerNumber, smallerNumber);
+            int gcd = Math.abs(Helper.CGD(biggerNumber, smallerNumber));
             result[0] = numerator / gcd;
             result[1] = denumerator / gcd;
             
@@ -122,5 +128,32 @@ public class RationalPresentation {
             result[1] = denumerator;
             return result;
         }
+    }
+
+    public static String ConvertENumber(String fNumber){
+        String result = "";
+        int eIndex = 0;
+
+        if (fNumber.contains("E")) {
+            boolean negative = fNumber.charAt(0) == '-';
+            eIndex = fNumber.indexOf("E");
+            int eFactor = Integer.parseInt(fNumber.substring(eIndex + 2, eIndex + 3));
+
+            result = (negative) ? "-0." : "0.";
+
+            for (int i = 0; i < eFactor; i++) {
+                result += "0";
+            }
+
+            fNumber = fNumber.replace(".", "");
+            fNumber = fNumber.substring(0, eIndex-1);
+            fNumber = (fNumber.contains("-")) ? fNumber.replace("-", "") : fNumber;
+
+            result += fNumber;
+
+            return result;
+        }
+
+        return fNumber;
     }
 }

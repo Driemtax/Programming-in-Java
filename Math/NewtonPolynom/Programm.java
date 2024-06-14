@@ -1,14 +1,25 @@
 package Math.NewtonPolynom;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class Programm {
     public static void main(String args[]){
-        HashMap<Integer, Double> data = new HashMap<Integer, Double>();
-        data.put(-1,0.0);
-        data.put(1,3.0);
-        data.put(2,5.0);
-        data.put(3, 4.0);
+        LinkedHashMap<Integer, Double> data = new LinkedHashMap<Integer, Double>();
+        data.put(1,82.0);
+        data.put(2,81.9);
+        data.put(3,82.1);
+        data.put(4, 81.8);
+        data.put(11, 81.7);
+        data.put(42, 81.1);
+        data.put(56, 79.7);
+        data.put(58, 79.4);
+        data.put(59, 78.9);
+        data.put(62, 79.9);
+        data.put(63, 79.4);
+        data.put(64, 79.1);
+        data.put(65, 78.7);
+
 
         String polynom = NewtonPolynom.CreatePolynom(data);
 
